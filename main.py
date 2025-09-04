@@ -27,3 +27,17 @@ plt.plot(range(1,11), wcss, marker="o", linestyle = "--")
 plt.title("Elbow plot")
 plt.show()
 
+#ADICIONAR TREINAMENTO DO MODELO.
+kmeans = KMeans(n_clusters=5, init="k-means++", random_state=42)
+y_kmeans = kmeans.fit_predict(X)
+
+plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 60, c = 'red', label = 'Cluster1')
+plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 60, c = 'blue', label = 'Cluster2')
+plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 60, c = 'green', label = 'Cluster3')
+plt.scatter(X[y_kmeans == 3, 0], X[y_kmeans == 3, 1], s = 60, c = 'violet', label = 'Cluster4')
+plt.scatter(X[y_kmeans == 4, 0], X[y_kmeans == 4, 1], s = 60, c = 'yellow', label = 'Cluster5') 
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s = 100, c = 'black', label = 'Centroids')
+plt.xlabel('Annual Income (k$)') 
+plt.ylabel('Spending Score (1-100)') 
+plt.legend() 
+plt.show()
